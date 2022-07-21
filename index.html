@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/68f8461cb9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="body">
+
+    <button class="light-mode-btn"><i class="fa-solid fa-lightbulb"></i></button>
+
+    <header class="header">
+        <div class="wrapper">
+            <div class="header-container">
+                <h1 class="title">
+                    Todo
+                </h1>
+                <input type="text" class="add-input" placeholder="Add a new task">
+            </div>
+        </div>
+        <div class="shadow"></div>
+    </header>
+
+    <nav class="nav">
+        <div class="wrapper">
+            <div class="nav-container">
+                <a class="nav-item all nav-active">All Tasks</a>
+                <a class="nav-item active">Active</a>
+                <a class="nav-item completed">Completed</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="wrapper">
+            <p class="info">The list is empty</p>
+
+            <ul class="todo-list">
+            </ul>
+
+            <button class="delete-all-btn"><i class="fa-solid fa-trash"></i> Delete all</button>
+        </div>
+    </main>
+
+    <section class="statistics">
+        <div class="wrapper">
+            <div class="statistics-container">
+                <p class="statistics-info todos-left">Active tasks: <span class="active-tasks">0</span></p>
+                <p class="statistics-info todos-completed">Completed tasks: <span class="completed-tasks">0</span></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+
+
+</html>

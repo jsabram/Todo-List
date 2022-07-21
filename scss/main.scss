@@ -1,0 +1,412 @@
+$main-color-light: #0073f7;
+$main-color-dark: #6e1df8;
+$light-color: #f8f8f8;
+$light-secondary-color: #fff;
+$dark-color: #121212;
+$dark-secondary-color: #1f1f1f;
+$grey-color: #9c9c9c;
+$error-color: #a30000;
+
+@mixin light-panel {
+	background-color: $light-secondary-color;
+	box-shadow: 0 0 10px $grey-color;
+	border-radius: 10px;
+}
+
+@mixin dark-panel {
+	background-color: $dark-secondary-color;
+	box-shadow: 0 0 10px #000;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: $light-color;
+	font-size: 1.6rem;
+	color: $dark-color;
+	font-family: 'Work Sans', sans-serif;
+}
+
+.wrapper {
+	width: 100%;
+	max-width: 1200px;
+	padding: 1em 2em;
+	margin: 0 auto;
+}
+
+.light-mode-btn {
+	position: fixed;
+	top: 0.5em;
+	right: 0.5em;
+	padding: 0.5em;
+	background-color: transparent;
+	border: none;
+	border-radius: 5px;
+	outline: 1px solid transparent;
+	font-size: 2.5rem;
+	color: $light-color;
+	text-shadow: 0px 0px 10px #000;
+	cursor: pointer;
+	z-index: 10;
+
+	&:focus {
+		outline: 1px solid rgba(248, 248, 248, 0.5);
+	}
+}
+
+.header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40vh;
+	background-image: url('../img/hero_light_lq.jpg');
+	background-position: center;
+	background-size: cover;
+	box-shadow: 0 0 20px #000;
+	z-index: 0;
+
+	.shadow {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: #0073f766;
+		z-index: -1;
+	}
+
+	.header-container {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.title {
+		margin-bottom: 0.2em;
+		font-size: 4.5rem;
+		color: $light-color;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+		text-shadow: 0px 0px 10px #000;
+	}
+
+	.add-input {
+		width: 100%;
+		padding: 0.5em 1em;
+		background-color: rgba(248, 248, 248, 0.5);
+		border: 1px solid rgba(248, 248, 248, 0.5);
+		border-radius: 10px;
+		outline: none;
+		color: $dark-color;
+
+		&:focus {
+			background-color: $light-color;
+			border: 1px solid $light-color;
+		}
+	}
+
+	.add-input,
+	.add-input::placeholder {
+		font-size: 1.6rem;
+		font-family: 'Work Sans', sans-serif;
+	}
+
+	.add-input-error,
+	.add-input-error:focus {
+		border: 1px solid $error-color;
+	}
+
+	.add-input-error::placeholder {
+		color: $error-color;
+	}
+}
+
+.nav {
+	margin-top: 2em;
+
+	.nav-container {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		padding: 1em 0;
+		@include light-panel;
+	}
+
+	.nav-item {
+		color: $grey-color;
+		cursor: pointer;
+		transition: color 0.3s;
+
+		&:hover {
+			color: $dark-color;
+		}
+	}
+
+	.nav-active {
+		color: $dark-color;
+	}
+}
+
+.main {
+	.info {
+		display: none;
+		text-align: center;
+		font-size: 2rem;
+		color: $grey-color;
+	}
+
+	.info-visible {
+		display: block;
+	}
+
+	.todo-list {
+		display: none;
+		list-style-type: none;
+		@include light-panel;
+
+		.todo {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1em 0.8em;
+		}
+
+		.todo-marked {
+			color: $grey-color;
+			font-style: italic;
+			text-decoration: line-through;
+		}
+
+		.todo-btn {
+			padding: 0 0.3em;
+			background: transparent;
+			border: none;
+			outline: none;
+			font-size: 1.8rem;
+			color: $main-color-light;
+			cursor: pointer;
+			transition: color 0.3s;
+
+			&:hover {
+				color: #1f83f5;
+			}
+		}
+
+		.delete-todo {
+			padding-right: 0;
+		}
+	}
+
+	.todo-list-visible {
+		display: block;
+	}
+
+	.delete-all-btn {
+		display: none;
+		margin: 1.5em auto 0;
+		padding: 0.5em 1em;
+		background-color: $light-secondary-color;
+		border-radius: 10px;
+		border: none;
+		outline: none;
+		font-size: 2rem;
+		color: $grey-color;
+		font-family: 'Work Sans', sans-serif;
+		box-shadow: 0 0 10px $grey-color;
+		cursor: pointer;
+		transition: color 0.3s, box-shadow 0.3s;
+
+		&:hover {
+			color: $dark-color;
+			box-shadow: 0 0 10px #000;
+		}
+	}
+
+	.delete-all-btn-visible {
+		display: block;
+	}
+}
+
+.statistics {
+	.statistics-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 1em;
+		color: $grey-color;
+		@include light-panel;
+	}
+
+	.todos-left {
+		margin-bottom: 0.5em;
+	}
+}
+
+.body-dark {
+	background-color: $dark-color;
+	color: $light-color;
+}
+
+.header-dark {
+	background-image: url('../img/hero_dark_lq.jpg');
+
+	.shadow {
+		background-color: #5600e866;
+	}
+
+	.add-input {
+		background-color: rgba(18, 18, 18, 0.9);
+		border: 1px solid rgba(18, 18, 18, 0.9);
+		color: $light-color;
+
+		&:focus {
+			background-color: $dark-color;
+			border: 1px solid $dark-color;
+		}
+	}
+
+	.add-input-error,
+	.add-input-error:focus {
+		border: 1px solid rgb(163, 0, 0);
+	}
+
+	.add-input-error::placeholder {
+		color: rgb(163, 0, 0);
+	}
+}
+
+.nav-dark {
+	.nav-container {
+		background-color: $dark-secondary-color;
+		box-shadow: 0 0 10px #000;
+	}
+
+	.nav-item {
+		&:hover {
+			color: $light-color;
+		}
+	}
+
+	.nav-active {
+		color: $light-color;
+	}
+}
+
+.main-dark {
+	.todo-list {
+		@include dark-panel;
+
+		.todo-btn {
+			color: $main-color-dark;
+
+			&:hover {
+				color: #7931f5;
+			}
+		}
+	}
+
+	.delete-all-btn {
+		@include dark-panel;
+
+		&:hover {
+			color: $light-color;
+		}
+	}
+}
+
+.statistics-dark {
+	.statistics-container {
+		@include dark-panel;
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+		background-image: url('../img/hero_light_hq.jpg');
+
+		.title {
+			font-size: 6rem;
+			margin-bottom: 1em;
+		}
+
+		.add-input,
+		.add-input::placeholder {
+			font-size: 2rem;
+		}
+	}
+
+	.nav {
+		.nav-item {
+			font-size: 2rem;
+		}
+	}
+
+	.main {
+		.info,
+		.delete-all-btn {
+			font-size: 2.3rem;
+		}
+
+		.todo-list {
+			.todo {
+				font-size: 2rem;
+			}
+
+			.todo-btn {
+				font-size: 2.8rem;
+			}
+		}
+	}
+
+	.statistics {
+		.statistics-container {
+			justify-content: space-around;
+			flex-direction: row;
+
+			.statistics-info {
+				font-size: 2rem;
+			}
+
+			.todos-left {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.header-dark {
+		background-image: url('../img/hero_dark_hq.jpg');
+	}
+}
+
+@media (min-width: 992px) {
+	.header {
+		.title {
+			font-size: 7rem;
+		}
+
+		.add-input {
+			padding: 1em 2em;
+		}
+	}
+
+	.main {
+		.todo-list {
+			.todo {
+				padding: 1em 1.5em;
+			}
+		}
+	}
+}
