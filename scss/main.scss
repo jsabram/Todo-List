@@ -244,14 +244,9 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		flex-direction: column;
 		padding: 1em;
 		color: $grey-color;
 		@include light-panel;
-	}
-
-	.todos-left {
-		margin-bottom: 0.5em;
 	}
 }
 

@@ -15,14 +15,11 @@ const navCompletedTasks = document.querySelector('.completed');
 const info = document.querySelector('.info');
 const deleteAllBtn = document.querySelector('.delete-all-btn');
 
-const statsActive = document.querySelector('.active-tasks');
-const statsComplete = document.querySelector('.completed-tasks');
+const allTasks = document.querySelector('.all-tasks');
 
 const tasksCollection = document.getElementsByClassName('todo');
 
 let taskCount = 0;
-let activeTasks = 0;
-let completedTasks = 0;
 
 const changeLightMode = () => {
 	body.classList.toggle('body-dark');
@@ -63,24 +60,15 @@ const createTask = () => {
 	newTask.appendChild(tools);
 
 	taskCount++;
-	activeTasks++;
 	countTasks();
-	handleStats();
 };
 
 const toolsEvents = (e) => {
 	if (e.target.classList.contains('fa-circle-check')) {
 		e.target.closest('li').classList.add('todo-marked');
-		activeTasks--;
-		completedTasks++;
-		handleStats();
 	} else if (e.target.classList.contains('fa-circle-xmark')) {
 		if (e.target.closest('li').classList.contains('todo-marked')) {
-			completedTasks--;
-			handleStats();
 		} else {
-			activeTasks--;
-			handleStats();
 		}
 		e.target.closest('li').remove();
 		taskCount--;
@@ -93,20 +81,11 @@ const countTasks = () => {
 		info.classList.add('info-visible');
 		todoList.classList.remove('todo-list-visible');
 		deleteAllBtn.classList.remove('delete-all-btn-visible');
+		allTasks.textContent = 0;
 	} else {
 		info.classList.remove('info-visible');
 		deleteAllBtn.classList.add('delete-all-btn-visible');
-	}
-};
-
-const handleStats = () => {
-	if (activeTasks >= 0 && completedTasks >= 0) {
-		statsActive.textContent = activeTasks;
-		statsComplete.textContent = completedTasks;
-	} else {
-		activeTasks = 0;
-		completedTasks = 0;
-		statsComplete.textContent = completedTasks;
+		allTasks.textContent = taskCount;
 	}
 };
 
@@ -154,10 +133,7 @@ const showCompletedTasks = () => {
 const clearList = () => {
 	todoList.innerHTML = '';
 	taskCount = 0;
-	activeTasks = 0;
-	completedTasks = 0;
 	countTasks();
-	handleStats();
 	clearInput();
 };
 

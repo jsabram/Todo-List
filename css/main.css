@@ -299,20 +299,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   padding: 1em;
   color: #9c9c9c;
   background-color: #fff;
   -webkit-box-shadow: 0 0 10px #9c9c9c;
           box-shadow: 0 0 10px #9c9c9c;
   border-radius: 10px;
-}
-
-.statistics .todos-left {
-  margin-bottom: 0.5em;
 }
 
 .body-dark {
